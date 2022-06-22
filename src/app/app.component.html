@@ -31,7 +31,7 @@
       <div class="bg-gris p-4">
         <div class="mb-3">
           <input
-          
+            [(ngModel)]="prenomPersonne"
             class="form-control"
             aria-label="Prénom"
             placeholder="Prénom"
@@ -39,7 +39,7 @@
         </div>
         <div class="mb-3">
           <input
-         
+            [(ngModel)]="nomPersonne"
             class="form-control"
             aria-label="prenom"
             placeholder="Nom"
@@ -59,7 +59,7 @@
         </div>
         <button
           class="btn btn-success btn-lg col-12"
-         
+          (click)="onAjouterPersonne()"
         >
           <i class="fa fa-plus"></i>
         </button>
@@ -80,12 +80,12 @@
             </tr>
           </thead>
           <tbody>
-            <tr >
-              <td>Johnny</td>
-              <td>CASH</td>
+            <tr *ngFor="let personne of personnes; index as i">
+              <td>{{ personne.prenom }}</td>
+              <td>{{ personne.nom }}</td>
               <td>
                 <button
-              
+                  (click)="onSupprimerPersonne(i)"
                   class="btn btn-danger"
                 >
                   <i class="fa fa-trash"></i>
