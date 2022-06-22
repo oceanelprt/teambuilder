@@ -9,13 +9,7 @@ export class EquipeService {
 
   equipes: Equipe[] = [{
       nom:"Equipe 1",
-      personnes:[
-        {
-          prenom: "Jacky",
-          nom: "Turbo",
-          id: 1
-        }
-      ]
+      personnes:[]
     },
     {
       nom:"Equipe 2",
