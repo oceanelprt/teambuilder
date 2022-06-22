@@ -13,7 +13,7 @@ export class AppComponent implements OnInit {
   nomPersonne:string = "";
   prenomPersonne:string = "";
   personnes:Personne[] = [];
-  idPersonne:number = this.personnes.length +1;
+  idPersonne:number = 0;
 
   indiceEquipe = -1;
   nomEquipe:string='';
@@ -28,7 +28,10 @@ export class AppComponent implements OnInit {
     }
 
   onAjouterPersonne(){
+    this.idPersonne = this.personnes.length;
+  
     let personne = new Personne(this.prenomPersonne, this.nomPersonne, this.idPersonne);
+
     this.personnes.push(personne);
     if (this.indiceEquipe != -1) {
       this.equipeService.ajouterPersonne(this.indiceEquipe, personne);
@@ -39,16 +42,17 @@ export class AppComponent implements OnInit {
     this.indiceEquipe = -1;
   }
 
-  onSupprimerPersonne(indicePersonne:number) {
-    this.personnes.splice(indicePersonne, 1);
+  onSupprimerPersonne(idPersonne:number) {
+   
+    this.personnes.splice(idPersonne, 1);
 
     let flag = 0;
 
     this.equipes.forEach((equipe) => {
       
       equipe.personnes.forEach((personne) =>{
-        if (personne.id == indicePersonne) {
-          this.equipeService.enleverPersonne(flag, indicePersonne);
+        if (personne.id == idPersonne) {
+          this.equipeService.enleverPersonne(flag, idPersonne);
         }
       
       })
