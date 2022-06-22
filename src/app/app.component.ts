@@ -1,31 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Equipe } from './models/equipe';
-import { Personne } from './models/personne';
+import { EquipeService } from './services/equipe.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
+export class AppComponent implements OnInit {
 
-export class AppComponent {
-  equipes:Equipe[] = [];
+  nomEquipe:string='';
+  equipes:Equipe[] =[];
 
-  nomEquipe:string = "";
-  nom: string = "";
-  prenom: string = "";
-  personnes : Personne[] = [];
+  constructor(private equipeService: EquipeService) {}
 
+  ngOnInit(){
+    // fct exc lors de la creation du component par angular
+    // apres l exec du constructor
+    this.equipes = this.equipeService.equipes
+    }
 
-  title = 'Team Builder';
-
-  onAjouterEquipe() : void {
-    let equipe: Equipe = {
-      id: this.equipes.length +1, 
-      nom: this.nomEquipe, 
-      personnes: []
-    }; 
-    this.nomEquipe = ""; // vider input
-    this.equipes.push(equipe);
+  onAjouterEquipe(){
+    this.equipeService.ajouterEquipe(new Equipe(this.nomEquipe));
+    this.nomEquipe='';
   }
 }

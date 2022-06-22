@@ -1,24 +1,24 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { EquipeComponentComponent } from './equipe-component/equipe-component.component';
-import { PersonneComponentComponent } from './personne-component/personne-component.component';
+import { EquipeComponent } from './equipe/equipe.component';
+
+import { EquipeService } from './services/equipe.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    EquipeComponentComponent,
-    PersonneComponentComponent
+    EquipeComponent
   ],
   imports: [
-    BrowserModule,
     FormsModule,
-    ReactiveFormsModule
+    BrowserModule
   ],
-  providers: [],
+  providers: [
+    EquipeService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

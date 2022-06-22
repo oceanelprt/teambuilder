@@ -1,5 +1,6 @@
-export class Personne {
-    constructor(public id: number, public nom: string, public prenom:string) {}
-
-    
+export class Personne{
+    constructor(
+        public prenom:string='',
+        public nom:string ='',
+        public id:number=0){}
 }

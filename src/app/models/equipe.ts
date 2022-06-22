@@ -1,12 +1,8 @@
-export class Equipe {
-    //public name:string;
-    //public status:string;
+import { Personne } from "./personne";
 
-    // 3 constructeurs
-    constructor(public id: number, public nom: string, public personnes: any[]) {
-    //    this.name=name;
-    //    this.status=status;
-    }
-
-    
+export class Equipe{
+    personnes:Personne[];
+    constructor(public nom:string=''){
+        this.personnes =[];
+        }
 }
