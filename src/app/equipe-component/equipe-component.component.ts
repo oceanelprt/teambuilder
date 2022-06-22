@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Equipe } from '../models/equipe';
-import { Personne } from '../models/personne';
 
 @Component({
   selector: 'app-equipe-component',
@@ -11,7 +10,6 @@ export class EquipeComponentComponent implements OnInit {
   @Input()equipes:Equipe[] = [];
   
   equipeIndice: number = -1;
-
 
   constructor() { }
 
@@ -25,9 +23,5 @@ export class EquipeComponentComponent implements OnInit {
   onEnleverPersonneEquipe(indiceEquipe : number, indicePersonne : number) : void {
     this.equipes[indiceEquipe].personnes.splice(indicePersonne, 1);
   }
-
-
-
-
 
 }
