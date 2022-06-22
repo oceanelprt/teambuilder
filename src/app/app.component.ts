@@ -42,24 +42,21 @@ export class AppComponent implements OnInit {
     this.indiceEquipe = -1;
   }
 
-  onSupprimerPersonne(idPersonne:number) {
-   
-    this.personnes.splice(idPersonne, 1);
+  onSupprimerPersonne(idPersonne:number, indexPersonne:number) {
 
-    let flag = 0;
+    this.personnes.splice(indexPersonne, 1);
 
-    this.equipes.forEach((equipe) => {
+
+    for (let i = 0; i < this.equipes.length; i++) {
       
-      equipe.personnes.forEach((personne) =>{
-        if (personne.id == idPersonne) {
-          this.equipeService.enleverPersonne(flag, idPersonne);
+      for (let j = 0; j < this.equipes[i].personnes.length; j++) {
+        if (this.equipes[i].personnes[j].id == idPersonne) {
+          this.equipeService.enleverPersonne(i, j);
         }
-      
-      })
-
-      flag++;
-    });
+      }
+    };
   }
+  
 
   onAjouterEquipe(){
     this.equipeService.ajouterEquipe(new Equipe(this.nomEquipe));
